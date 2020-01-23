@@ -46,7 +46,7 @@ const char* password =  "Solnet1*";
 const char* mqttServer = "vmr-mr8v6yiwia8l.messaging.solace.cloud";
 const int mqttPort = 20262;
 const char* mqttUser = "solace-cloud-client";
-const char* mqttPassword = "ed2kp28bk9dt84lo8htvrvvue9";
+const char* mqttPassword = "";
 
 // Global timers for distance finder
 unsigned long startMillis;
