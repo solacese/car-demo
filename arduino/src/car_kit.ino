@@ -82,20 +82,17 @@ typedef struct {
 } wifiCreds_t;
 
 const wifiCreds_t wifiCreds[] {
-  {"Messaging 2.4", "Solnet1*"},
-  {"TheInterWebz", "RufusDufus47"}
+  {"<ssid>", "<ssid_pwd>"}
 };
 
-const char* ssid = "Messaging 2.4";
-const char* password =  "";
-//const char* ssid = "";
-//const char* password =  "";
-const char* mqttServer = "vmr-mr8v6yiwia8l.messaging.solace.cloud";
-const int mqttPort = 20262;
-const char* mqttUser = "solace-cloud-client";
-const char* mqttPassword = "";
+const char* ssid = "<ssid>";
+const char* password =  "<ssid_pwd>";
+const char* mqttServer = "<broker-host>";
+const int mqttPort = 1883;
+const char* mqttUser = "<username>";
+const char* mqttPassword = "<password>";
 
-// Global timers for drive events
+// Global timers for drive eventsp
 unsigned long driveEventTimeoutMillis = 0l;
 boolean driveEvent = false;
 
@@ -223,7 +220,7 @@ boolean mqttReconnect() {
   char mqttClientId[40];
   sprintf(mqttClientId, "ESP8266Client%lu", chipId);
 
-  if (client.connect(mqttClientId, mqttUser, mqttPassword )) {
+  if (client.connect(mqttClientId, mqttUser, mqttPassword, NULL, NULL, NULL, NULL, false )) {
     Serial.println("connected");
     // Subscribe to global drive commands
     client.subscribe("car/drive");
@@ -233,7 +230,7 @@ boolean mqttReconnect() {
     // Subscribe to car specific drive commands
     char carDriveTopic[40];
     sprintf(carDriveTopic, "car/drive/%lu", chipId);
-    client.subscribe(carDriveTopic);
+    client.subscribe(carDriveTopic, 1);
 
     char carModeTopic[40];
     sprintf(carModeTopic, "car/mode/%lu", chipId);
@@ -328,8 +325,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
     if (rightWheel != 0) {
       rightWheelPower = myCar.rightWheelPowerMin + ((myCar.rightWheelPowerMax - myCar.rightWheelPowerMin) * abs(rightWheel)) / 100;
     }
+    
     analogWrite(RIGHT_POWER, rightWheelPower); // right wheel
     analogWrite(LEFT_POWER, leftWheelPower); // left wheel
+    
 
     if (mqttDebug) {
       char powerMessage[200];
@@ -339,6 +338,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
     setLeftWheel(leftWheel);
     setRightWheel(rightWheel);
+
+    delay(800);
 
     if (duration == 0) {
       duration = 10000;
