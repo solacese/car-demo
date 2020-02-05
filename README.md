@@ -11,7 +11,7 @@ To get started, you need to do the following:
 
  1. Download this repository
  2. Upload the code (`car_kit.ino`) to Arduino Chip
- 3. Assemble the car kit (will be covered separately in a blog post)
+ 3. Assemble the car kit (here is a nice [video tutorial](https://www.youtube.com/watch?time_continue=7&v=sEjhM3cMlhc&feature=emb_logo))
  4. Send MQTT messages from PubSub+ to control the car
 
 ## Uploading code to Arduino Chip
