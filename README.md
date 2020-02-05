@@ -17,10 +17,12 @@ To get started, you need to do the following:
 ## Uploading code to Arduino Chip
 ***The following instructions are meant to be followed for Arduino chip ESP8266 only.**
 
+### Downloading Arduino IDE
 To be able to upload code to the chip, you will need to use the Arduino IDE ([download](https://www.arduino.cc/en/main/software)). I recommend downloading the software instead of just using the browser version.
 
 Once installed, open `car_kit.ino` in the Arduino IDE. 
 
+### Configuring board
 Before uploading this code to your Arduino chip, you will need to configure your IDE to work with the specific model of your chip as well as install `PubSubClient` and `ArduinoJson` libraries.
 
 Arduino IDE supports a lot of 'boards'/chips out-of-box but sadly, doesn't support the ESP8266 chip. So, we need to add it manually to Arduino's Board Manager. To do so, go to **Arduino** > **Preferences** and enter the following URL : `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
@@ -33,6 +35,7 @@ Now, go to Tools > Boards > Boards Manager, and search for `ESP8266`. You will n
 
 insert image here
 
+### Installing necessary libraries
 Now, you are ready to install `PubSubClient` and `ArduinoJson` libraries. You can easily do that by going to **Tools** > **Manage Libraries** and simply searching for them and installing them. 
 
 insert image here
@@ -43,6 +46,7 @@ Finally, go to **Sketch** > **Upload** to upload the code to your chip.
 
 That's it!
 
+## Sending MQTT messages via PubSub+
 You can now to go PubSub+ UI and send some sample messages to your chip to control the car.
 
 If you are using the exact code from `car_kit.ino`, you will need to publish messages to `car/drive/${chipID}` topic where `chipID` is your Chip's ID which can be found by <add info here>. 
