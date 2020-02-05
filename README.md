@@ -27,18 +27,18 @@ Before uploading this code to your Arduino chip, you will need to configure your
 
 Arduino IDE supports a lot of 'boards'/chips out-of-box but sadly, doesn't support the ESP8266 chip. So, we need to add it manually to Arduino's Board Manager. To do so, go to **Arduino** > **Preferences** and enter the following URL : `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
 
-insert image here
+![](https://github.com/solacese/car-demo/blob/master/images/adding_board_url.png)
 
 Click OK.
 
 Now, go to Tools > Boards > Boards Manager, and search for `ESP8266`. You will now see `ESP8266` board by `ESP8266 Community`.  Click on `Install` to install it. You can also choose to install a specific version if needed. We are using `2.6.3` currently.
 
-insert image here
+![](https://github.com/solacese/car-demo/blob/master/images/configuring_board.png)
 
 ### Installing necessary libraries
 Now, you are ready to install `PubSubClient` and `ArduinoJson` libraries. You can easily do that by going to **Tools** > **Manage Libraries** and simply searching for them and installing them. 
 
-insert image here
+![](https://github.com/solacese/car-demo/blob/master/images/installing_library.png)
 
 Once you have these libraries installed, you are ready to upload the code to Arduino chip. Plug your chip into your computer via Micro USB cable. You will see a blue LED light as soon as you plug-in the chip. If you don't see the light, try toggling the white switch on the chip to turn it on. 
 
