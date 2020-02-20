@@ -49,7 +49,7 @@ That's it!
 ## Sending MQTT messages via PubSub+
 You can now to go PubSub+ UI and send some sample messages to your chip to control the car.
 
-If you are using the exact code from `car_kit.ino`, you will need to publish messages to `car/drive/${chipID}` topic where `chipID` is your Chip's ID which can be found by looking at the internal Solace queue that was created (I am sure there is a better way to figure this out). For example, if the queue is: `#mqtt/ESP8266Client6994174/14`, your chipId will be '6994174`. 
+If you are using the exact code from `car_kit.ino`, you will need to publish messages to `car/drive/${chipID}` topic where `chipID` is your Chip's ID which can be found by looking at the internal Solace queue that was created (I am sure there is a better way to figure this out). For example, if the queue is: `#mqtt/ESP8266Client6994174/14`, your chipId will be `6994174`. 
 
 The payload of your message should be in JSON format and should include three values:
 
