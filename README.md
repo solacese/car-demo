@@ -49,7 +49,13 @@ That's it!
 ## Sending MQTT messages via PubSub+
 You can now to go PubSub+ UI and send some sample messages to your chip to control the car.
 
-If you are using the exact code from `car_kit.ino`, you will need to publish messages to `car/drive/${chipID}` topic where `chipID` is your Chip's ID which can be found by looking at the internal Solace queue that was created (I am sure there is a better way to figure this out). For example, if the queue is: `#mqtt/ESP8266Client6994174/14`, your chipId will be `6994174`. 
+### Getting the Chip ID ###
+If you are using the exact code from `car_kit.ino`, you will need to publish messages to `car/drive/${chipID}` topic where `chipID` is your Chip's ID. You can get the Chip ID by looking at the output of your code in the Serial Monitor.  To be able to run the Serial Monitor from Arduino, you will need to make sure your chip is plugged in via USB to your laptop. When you upload the code, you can run the Serial Monitor to see the output. Here is the output of my Serial Monitor:
+![](https://github.com/solacese/car-demo/blob/master/images/output_of_serial_monitor.png)
+
+As shown in the screenshot above, my Chip ID is `6994174`.
+
+Here is some good [documentation](https://www.instructables.com/id/HOW-TO-use-the-ARDUINO-SERIAL-MONITOR/) on how to use Arduino's Serial Monitor.
 
 The payload of your message should be in JSON format and should include three values:
 
