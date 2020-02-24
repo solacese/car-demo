@@ -219,6 +219,11 @@ boolean mqttReconnect() {
   Serial.println("Connecting to MQTT...");
   char mqttClientId[40];
   sprintf(mqttClientId, "ESP8266Client%lu", chipId);
+  
+  // Print Chip ID
+  char printChipId[40];
+  sprintf(printChipId, "Chip Id is %lu", chipId);
+  Serial.println(printChipId);
 
   if (client.connect(mqttClientId, mqttUser, mqttPassword, NULL, NULL, NULL, NULL, false )) {
     Serial.println("connected");
