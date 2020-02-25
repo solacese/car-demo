@@ -47,7 +47,7 @@ Finally, go to **Sketch** > **Upload** to upload the code to your chip.
 That's it!
 
 ## Sending MQTT messages via PubSub+
-You can now to go PubSub+ UI and send some sample messages to your chip to control the car.
+You can now go to PubSub+ UI and send some sample messages to your chip to control the car.
 
 ### Getting the Chip ID ###
 If you are using the exact code from `car_kit.ino`, you will need to publish messages to `car/drive/${chipID}` topic where `chipID` is your Chip's ID. You can get the Chip ID by looking at the output of your code in the Serial Monitor.  To be able to run the Serial Monitor from Arduino, you will need to make sure your chip is plugged in via USB to your laptop. When you upload the code, you can run the Serial Monitor to see the output. Here is the output of my Serial Monitor:
