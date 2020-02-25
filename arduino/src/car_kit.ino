@@ -88,7 +88,7 @@ const wifiCreds_t wifiCreds[] {
 const char* ssid = "<ssid>";
 const char* password =  "<ssid_pwd>";
 const char* mqttServer = "<broker-host>";
-const int mqttPort = 1883;
+const int mqttPort = <port>;
 const char* mqttUser = "<username>";
 const char* mqttPassword = "<password>";
 
