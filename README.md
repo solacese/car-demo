@@ -41,7 +41,7 @@ const char* mqttPassword = "<password>"; //MQTT Password
 The MQTT Host can be retrieved from the Connect Tab within Solace Cloud as shown below:
 ![MQTT Credentials](https://raw.githubusercontent.com/solacese/solace-js-mqtt-postgres-blog/master/docs/mqtt-conn-details.png)
 
-### Configuring board
+### Configuring the board
 Before uploading this code to your Arduino chip, you will need to configure your IDE to work with the specific model of your chip as well as install `PubSubClient` and `ArduinoJson` libraries.
 
 Arduino IDE supports a lot of 'boards'/chips out-of-box but sadly, doesn't support the ESP8266 chip. So, we need to add it manually to Arduino's Board Manager. To do so, go to **Arduino** > **Preferences** and enter the following URL : `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
