@@ -9,10 +9,11 @@ This repository contains code (`arduino/src/car_kit.ino`) that is meant to be up
 ## Getting Started
 To get started, you need to do the following:
 
- 1. Download this repository
- 2. Upload the code (`car_kit.ino`) to Arduino Chip
- 3. Assemble the car kit (here is a nice [video tutorial](https://www.youtube.com/watch?time_continue=7&v=sEjhM3cMlhc&feature=emb_logo))
- 4. Send MQTT messages from PubSub+ to control the car
+ 1. Clone this repository using the command `git clone `
+ 2. Modify the code with the credentials for your local WiFi network and the credentials with the Solace Cloud PubSub+ Broker
+ 3. Upload the code (`car_kit.ino`) to Arduino Chip
+ 4. Assemble the car kit (here is a nice [video tutorial](https://www.youtube.com/watch?time_continue=7&v=sEjhM3cMlhc&feature=emb_logo))
+ 5. Send MQTT messages from PubSub+ to control the car
 
 ## Uploading code to Arduino Chip
 ***The following instructions are meant to be followed for Arduino chip ESP8266 only.**
@@ -21,6 +22,24 @@ To get started, you need to do the following:
 To be able to upload code to the chip, you will need to use the Arduino IDE ([download](https://www.arduino.cc/en/main/software)). I recommend downloading the software instead of just using the browser version.
 
 Once installed, open `car_kit.ino` in the Arduino IDE. 
+
+Modify the code to have your local WiFi credentials and the Solace Broker's MQTT credentials from the snippet below:
+
+```
+/**
+  Modify the section below with your WiFi network credentials and 
+  the Solace Broker Credentials  
+**/
+const char* ssid = "<ssid>"; //WiFi Network Name
+const char* password =  "<ssid_pwd>"; //WiFi Password
+const char* mqttServer = "<broker-host>"; // MQTT Host (without the tcp prefix)
+const int mqttPort = <port>; // MQTT Port
+const char* mqttUser = "<username>"; // MQTT Username
+const char* mqttPassword = "<password>"; //MQTT Password
+```
+
+The MQTT Host can be retrieved from the Connect Tab within Solace Cloud as shown below:
+![MQTT Credentials](https://raw.githubusercontent.com/solacese/solace-js-mqtt-postgres-blog/master/docs/mqtt-conn-details.png)
 
 ### Configuring board
 Before uploading this code to your Arduino chip, you will need to configure your IDE to work with the specific model of your chip as well as install `PubSubClient` and `ArduinoJson` libraries.
@@ -50,7 +69,7 @@ That's it!
 You can now go to PubSub+ UI and send some sample messages to your chip to control the car.
 
 ### Getting the Chip ID ###
-If you are using the exact code from `car_kit.ino`, you will need to publish messages to `car/drive/${chipID}` topic where `chipID` is your Chip's ID. You can get the Chip ID by looking at the output of your code in the Serial Monitor.  To be able to run the Serial Monitor from Arduino, you will need to make sure your chip is plugged in via USB to your laptop. When you upload the code, you can run the Serial Monitor to see the output. Here is the output of my Serial Monitor:
+If you are using the exact code from `car_kit.ino`, you will need to publish messages to `car/drive/${chipID}` topic to drive the car where `chipID` is your Chip's ID. You can get the Chip ID by looking at the output of your code in the Serial Monitor.  To be able to run the Serial Monitor from Arduino, you will need to make sure your chip is plugged in via USB to your laptop. When you upload the code, you can run the Serial Monitor to see the output. Here is the output of my Serial Monitor:
 ![](https://github.com/solacese/car-demo/blob/master/images/output_of_serial_monitor.png)
 
 As shown in the screenshot above, my Chip ID is `6994174`.
